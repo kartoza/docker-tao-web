@@ -11,7 +11,7 @@ RUN dpkg-divert --local --rename --add /sbin/initctl
 # Or comment this line out if you do not wish to use caching
 ADD 71-apt-cacher-ng /etc/apt/apt.conf.d/71-apt-cacher-ng
 
-RUN apt-get -y update && apt-get install -y apache2 php5 php5-gd php5-mysql php5-tidy php5-curl php-xml-parser unzip
+RUN apt-get -y update && apt-get install -y apache2 php5 php5-gd php5-pgsql php5-tidy php5-curl php-xml-parser unzip
 
 RUN a2enmod rewrite
 
