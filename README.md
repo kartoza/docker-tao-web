@@ -7,19 +7,19 @@ Assuming you already have docker installed, the simplest way to use it is to do:
 
 ```
 docker pull kartoza/docker-tao-web
-docker pull mysql
+docker pull kartoza/potgis
 ```
 
 To get the base images. This may take a little while depending on your available bandwidth. Now spin up
 a mysql container and a Tao container:
 
 ```
-docker run --name="tao-mysql" --hostname="tao-mysql" --restart="always" -e MYSQL_ROOT_PASSWORD=somepassword -d -t mysql
-docker run --name="tao-web" --hostname="tao-web" --restart="always" -d -t -p 8002:80 --link tao-mysql:tao-mysql kartoza/tao-web
+docker run --name="tao-postgis" --hostname="tao-postgis" --restart="always" -d -t kartoza/postgis
+docker run --name="tao-web" --hostname="tao-web" --restart="always" -d -t -p 8002:80 --link tao-postgis:tao-postgis kartoza/tao-web
 ```
 
 Once your tao container is running open your browser at http://localhost:8002 and follow the installation wizard.
-For the mysql connections options use host 'tao-mysql' and whatever password you defined above.
+For the postgresql connection options use host 'tao-postgis', user 'docker' and password 'docker' or set your own user/pwd before running.
 
 
 -----------------
